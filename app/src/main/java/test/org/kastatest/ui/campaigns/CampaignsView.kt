@@ -1,6 +1,7 @@
 package test.org.kastatest.ui.campaigns
 
 import android.arch.lifecycle.LifecycleOwner
+import android.arch.lifecycle.Observer
 import android.content.Context
 import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.RecyclerView
@@ -10,6 +11,7 @@ import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
 import test.org.kastatest.R
+import test.org.kastatest.data.entities.Campaign
 
 class CampaignsView @JvmOverloads constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int = 0) : ConstraintLayout(context, attrs, defStyleAttr) {
 
@@ -21,14 +23,20 @@ class CampaignsView @JvmOverloads constructor(context: Context, attrs: Attribute
 
     fun setup(viewModel: CampaignsViewModel, lifecycleOwner: LifecycleOwner) {
         mViewModel = viewModel
-        mViewModel.campaigns.observe(lifecycleOwner, { campaigns -> mAdapter.replaceWith(campaigns) })
-        mViewModel.showError.observe(lifecycleOwner, { error ->
-            if (error!!) {
-                val toast = Toast(context)
-                toast.setText(R.string.internet_error)
-                toast.show()
-            }
-        })
+        mViewModel.campaigns.observe(lifecycleOwner, Observer { workWithCampaigns(it) })
+        mViewModel.showError.observe(lifecycleOwner, Observer { workWithError(it) })
+    }
+
+    private fun workWithCampaigns(campaigns: List<Campaign>?) {
+        mAdapter.replaceWith(campaigns)
+    }
+
+    private fun workWithError(error: Boolean?) {
+        error?.let {
+            val toast = Toast(context)
+            toast.setText(R.string.internet_error)
+            toast.show()
+        }
     }
 
     override fun onFinishInflate() {
