@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "844938903480",
+    "firebase_url": "https://kastatest-9ddec.firebaseio.com",
+    "project_id": "kastatest-9ddec",
+    "storage_bucket": "kastatest-9ddec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844938903480:android:31a4f43ca6def01a",
+        "android_client_info": {
+          "package_name": "test.org.kastatest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844938903480-ki3vepkftk406du6ignp3rdg08hcum37.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "test.org.kastatest",
+            "certificate_hash": "6df5b2c6ac1cc61006b981f6b9f66b41714be92f"
+          }
+        },
+        {
+          "client_id": "844938903480-94l2047utje5q6q1tcnigk9h4jjlk10j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFMaZDj3vQ1NmLaLtoST_EZztGHH7NOdY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844938903480-94l2047utje5q6q1tcnigk9h4jjlk10j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
