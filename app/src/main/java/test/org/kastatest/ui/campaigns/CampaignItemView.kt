@@ -18,10 +18,10 @@ import test.org.kastatest.R
 class CampaignItemView @JvmOverloads constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int = 0) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     @BindView(R.id.campaign_name)
-    internal var textName: TextView? = null
+    @JvmField var textName: TextView? = null
 
     @BindView(R.id.image_from_net)
-    internal var image: ImageView? = null
+    @JvmField var image: ImageView? = null
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         var heightMeasureSpec = heightMeasureSpec
@@ -44,14 +44,12 @@ class CampaignItemView @JvmOverloads constructor(context: Context, attrs: Attrib
 
     fun bindTo(campaign: Campaign, position: Int) {
         textName!!.text = campaign.name
-        if (TextUtils.isEmpty(campaign.mImageUrl)) {
-            image!!.setImageDrawable(null)
-        } else if (position == 1) {
-            Glide.with(context)
+        when {
+            TextUtils.isEmpty(campaign.mImageUrl) -> image!!.setImageDrawable(null)
+            position == 1 -> Glide.with(context)
                     .load(campaign.mImageUrl)
                     .into(image!!)
-        } else {
-            Glide.with(context)
+            else -> Glide.with(context)
                     .load("https://m.cdnmk.net/imgw/loc/360x198/" + campaign.mImageUrl)
                     .into(image!!)
         }

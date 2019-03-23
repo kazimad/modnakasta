@@ -2,15 +2,10 @@ package test.org.kastatest.utils
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
+import android.util.Log
 import test.org.kastatest.R
 
 object ActivityUtils {
-
-    private val TAG = ActivityUtils::class.java.simpleName
-
-    fun addFragmentToActivity(activity: FragmentActivity, fragment: Fragment) {
-        addFragmentToActivity(activity, fragment, false)
-    }
 
     fun addFragmentToActivity(activity: FragmentActivity, fragment: Fragment, addToBackStack: Boolean) {
         addFragmentToActivity(activity, fragment, addToBackStack, R.id.fragmentContainer)

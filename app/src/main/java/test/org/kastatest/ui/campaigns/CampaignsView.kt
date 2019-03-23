@@ -16,7 +16,8 @@ import test.org.kastatest.data.entities.Campaign
 class CampaignsView @JvmOverloads constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int = 0) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     @BindView(R.id.campaigns_list)
-    internal var mCampaignsList: RecyclerView? = null
+    @JvmField
+    var mCampaignsList: RecyclerView? = null
 
     private lateinit var mViewModel: CampaignsViewModel
     private val mAdapter = CampaignsAdapter()
@@ -33,9 +34,9 @@ class CampaignsView @JvmOverloads constructor(context: Context, attrs: Attribute
 
     private fun workWithError(error: Boolean?) {
         error?.let {
-            val toast = Toast(context)
-            toast.setText(R.string.internet_error)
-            toast.show()
+            if (error) {
+                Toast.makeText(context, R.string.internet_error, Toast.LENGTH_LONG).show()
+            }
         }
     }
 
